@@ -1,0 +1,401 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNaMt8u8KrpBSC5M7XoCv+h",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/jaisankarreddy/jai-sankar-/blob/main/Tokenization\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "flkenlrdRiNp",
+        "outputId": "b90653a6-a1ae-4992-8991-e5c2795cde1e"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Once', 'there', 'lived', 'a', 'greedy', 'man', 'in', 'a', 'small', 'town.', '(He', 'was', 'very', 'rich,', 'and', 'he', 'loved', 'gold', 'and', 'all', 'things', 'fancy.', 'But', 'he', 'loved', 'his', 'daughter', 'more', 'than', 'anything.', 'One', 'day,', 'he', 'chanced', 'upon', 'a', 'fairy.', 'The', 'fairy’s', 'hair', 'was', 'caught', 'in', 'a', 'few', 'tree', 'branches.', 'He', 'helped', 'her', 'out,', 'but', 'as', 'his', 'greediness', 'took', 'over,', 'he', 'realised', 'that', 'he', 'had', 'an', 'opportunity', 'to', 'become', 'richer', 'by', 'asking', 'for', 'a', 'wish', 'in', 'return', '(by', 'helping', 'her', 'out).', 'The', 'fairy', 'granted', 'him', 'a', 'wish.', 'He', 'said,', '“All', 'that', 'I', 'touch', 'should', 'turn', 'to', 'gold.”', 'And', 'his', 'wish', 'was', 'granted', 'by', 'the', 'grateful', 'fairy.']\n",
+            "No.of tokens :  103\n"
+          ]
+        }
+      ],
+      "source": [
+        "text = '''Once there lived a greedy man in a small town. (He was very rich, and he loved gold and all things fancy. But he loved his daughter more than anything. One day, he chanced upon a fairy. The fairy’s hair was caught in a few tree branches. He helped her out, but as his greediness took over, he realised that he had an opportunity to become richer by asking for a wish in return (by helping her out). The fairy granted him a wish. He said, “All that I touch should turn to gold.” And his wish was granted by the grateful fairy.'''\n",
+        "\n",
+        "tokens = text.split()\n",
+        "\n",
+        "print(tokens)\n",
+        "print(\"No.of tokens : \", len(tokens))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "text = '''Once there lived a greedy man in a small town. He was very rich, and he loved gold and all things fancy. But he loved his daughter more than anything. One day, he chanced upon a fairy. The fairy’s hair was caught in a few tree branches. He helped her out, but as his greediness took over, he realised that he had an opportunity to become richer by asking for a wish in return (by helping her out). The fairy granted him a wish. He said, “All that I touch should turn to gold.” And his wish was granted by the grateful fairy.'''\n",
+        "sentences = text.split('.')\n",
+        "\n",
+        "print(sentences)\n",
+        "print(\"No.of sentences : \", len(sentences))\n",
+        "     "
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "sa3Cy-jQd7wa",
+        "outputId": "16d5e9be-5e63-4b32-b4e1-98803400ba8f"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Once there lived a greedy man in a small town', ' He was very rich, and he loved gold and all things fancy', ' But he loved his daughter more than anything', ' One day, he chanced upon a fairy', ' The fairy’s hair was caught in a few tree branches', ' He helped her out, but as his greediness took over, he realised that he had an opportunity to become richer by asking for a wish in return (by helping her out)', ' The fairy granted him a wish', ' He said, “All that I touch should turn to gold', '” And his wish was granted by the grateful fairy', '']\n",
+            "No.of sentences :  10\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import re"
+      ],
+      "metadata": {
+        "id": "uX1i36LOgWNJ"
+      },
+      "execution_count": 7,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "tokens = re.findall(\"[\\w']+\", text)  \n",
+        "print(tokens)\n",
+        "print(\"No.of tokens : \", len(tokens))\n",
+        "     "
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "km7Tx2_OgcUc",
+        "outputId": "53a464af-84bb-4b40-aa41-8e24936908c5"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Once', 'there', 'lived', 'a', 'greedy', 'man', 'in', 'a', 'small', 'town', 'He', 'was', 'very', 'rich', 'and', 'he', 'loved', 'gold', 'and', 'all', 'things', 'fancy', 'But', 'he', 'loved', 'his', 'daughter', 'more', 'than', 'anything', 'One', 'day', 'he', 'chanced', 'upon', 'a', 'fairy', 'The', 'fairy', 's', 'hair', 'was', 'caught', 'in', 'a', 'few', 'tree', 'branches', 'He', 'helped', 'her', 'out', 'but', 'as', 'his', 'greediness', 'took', 'over', 'he', 'realised', 'that', 'he', 'had', 'an', 'opportunity', 'to', 'become', 'richer', 'by', 'asking', 'for', 'a', 'wish', 'in', 'return', 'by', 'helping', 'her', 'out', 'The', 'fairy', 'granted', 'him', 'a', 'wish', 'He', 'said', 'All', 'that', 'I', 'touch', 'should', 'turn', 'to', 'gold', 'And', 'his', 'wish', 'was', 'granted', 'by', 'the', 'grateful', 'fairy']\n",
+            "No.of tokens :  104\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sentences = re.compile('[.?!] ').split(text)\n",
+        "print(sentences)\n",
+        "print(\"No.of sentences : \", len(sentences))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "AIfpI0nVg1cB",
+        "outputId": "48f8bf18-7d0a-4d9b-b7f8-c59f57405a45"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Once there lived a greedy man in a small town', 'He was very rich, and he loved gold and all things fancy', 'But he loved his daughter more than anything', 'One day, he chanced upon a fairy', 'The fairy’s hair was caught in a few tree branches', 'He helped her out, but as his greediness took over, he realised that he had an opportunity to become richer by asking for a wish in return (by helping her out)', 'The fairy granted him a wish', 'He said, “All that I touch should turn to gold.” And his wish was granted by the grateful fairy.']\n",
+            "No.of sentences :  8\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "nltk.download('punkt')"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "lWOW7oKKjFhg",
+        "outputId": "0937522c-063e-47c9-c3c9-027d7cae19f5"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package punkt to /root/nltk_data...\n",
+            "[nltk_data]   Unzipping tokenizers/punkt.zip.\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 10
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk.tokenize import word_tokenize \n",
+        "tokens = word_tokenize(text)\n",
+        "print(tokens)\n",
+        "print(\"No.of tokens : \", len(tokens))\n",
+        "     "
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Q5UJ_xSdkaoL",
+        "outputId": "d3efbca9-a5ce-4533-c307-a5af3071f478"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Once', 'there', 'lived', 'a', 'greedy', 'man', 'in', 'a', 'small', 'town', '.', 'He', 'was', 'very', 'rich', ',', 'and', 'he', 'loved', 'gold', 'and', 'all', 'things', 'fancy', '.', 'But', 'he', 'loved', 'his', 'daughter', 'more', 'than', 'anything', '.', 'One', 'day', ',', 'he', 'chanced', 'upon', 'a', 'fairy', '.', 'The', 'fairy', '’', 's', 'hair', 'was', 'caught', 'in', 'a', 'few', 'tree', 'branches', '.', 'He', 'helped', 'her', 'out', ',', 'but', 'as', 'his', 'greediness', 'took', 'over', ',', 'he', 'realised', 'that', 'he', 'had', 'an', 'opportunity', 'to', 'become', 'richer', 'by', 'asking', 'for', 'a', 'wish', 'in', 'return', '(', 'by', 'helping', 'her', 'out', ')', '.', 'The', 'fairy', 'granted', 'him', 'a', 'wish', '.', 'He', 'said', ',', '“', 'All', 'that', 'I', 'touch', 'should', 'turn', 'to', 'gold.', '”', 'And', 'his', 'wish', 'was', 'granted', 'by', 'the', 'grateful', 'fairy', '.']\n",
+            "No.of tokens :  122\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk.tokenize import sent_tokenize\n",
+        "sentences = sent_tokenize(text)\n",
+        "print(sentences)\n",
+        "print(\"No.of sentences : \", len(sentences))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4C62AV-bklk_",
+        "outputId": "92ab54d2-e7f7-4d8f-961e-66f17bd30b97"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Once there lived a greedy man in a small town.', 'He was very rich, and he loved gold and all things fancy.', 'But he loved his daughter more than anything.', 'One day, he chanced upon a fairy.', 'The fairy’s hair was caught in a few tree branches.', 'He helped her out, but as his greediness took over, he realised that he had an opportunity to become richer by asking for a wish in return (by helping her out).', 'The fairy granted him a wish.', 'He said, “All that I touch should turn to gold.” And his wish was granted by the grateful fairy.']\n",
+            "No.of sentences :  8\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk.stem import PorterStemmer"
+      ],
+      "metadata": {
+        "id": "VV25mgWclxXj"
+      },
+      "execution_count": 13,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "porter = PorterStemmer()\n",
+        "print(porter.stem(\"cats\"))\n",
+        "print(porter.stem(\"troubling\"))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4K-Wi5mLpVkz",
+        "outputId": "930ac7ae-17e0-4b76-d4fd-b17f95036675"
+      },
+      "execution_count": 14,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "cat\n",
+            "troubl\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk.stem import PorterStemmer\n",
+        "porter = PorterStemmer()\n",
+        "\n",
+        "sentence=\"Pythoners are very intelligent and work very pythonly and now they are pythoning their way to success.\"\n",
+        "\n",
+        "from nltk.tokenize import sent_tokenize, word_tokenize\n",
+        "\n",
+        "def stemSentence(sentence):\n",
+        "    token_words=word_tokenize(sentence)\n",
+        "    print(token_words)\n",
+        "    stem_sentence=[]\n",
+        "    for word in token_words:\n",
+        "        stem_sentence.append(porter.stem(word))\n",
+        "        stem_sentence.append(\" \")\n",
+        "    return \"\".join(stem_sentence)\n",
+        "\n",
+        "x=stemSentence(sentence)\n",
+        "print(\"Sentence after stemming :\", x)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "QQQXjhlnpqEn",
+        "outputId": "5b42fe90-b699-42d0-ae63-ddd693e41b1b"
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Pythoners', 'are', 'very', 'intelligent', 'and', 'work', 'very', 'pythonly', 'and', 'now', 'they', 'are', 'pythoning', 'their', 'way', 'to', 'success', '.']\n",
+            "Sentence after stemming : python are veri intellig and work veri pythonli and now they are python their way to success . \n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "nltk.download('wordnet') \n",
+        "from nltk.stem import WordNetLemmatizer\n",
+        "wordnet_lemmatizer = WordNetLemmatizer()\n",
+        "\n",
+        "sentence = \"He was running and eating at same time. He has bad habit of swimming after playing long hours in the Sun.\"\n",
+        "punctuations=\"?:!.,;\"\n",
+        "token_words = nltk.word_tokenize(sentence)\n",
+        "print(token_words)\n",
+        "\n",
+        "lemma_sentence=[]\n",
+        "for word in token_words:\n",
+        "  lemma_sentence.append(wordnet_lemmatizer.lemmatize(word))\n",
+        "  lemma_sentence.append(\" \")\n",
+        "\n",
+        "print(\"lemmas of tokens: \", ''.join(lemma_sentence))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "SsFykAlfqIFu",
+        "outputId": "ae1a63b7-b341-42fe-8e98-7d8ee3ec4f49"
+      },
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package wordnet to /root/nltk_data...\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['He', 'was', 'running', 'and', 'eating', 'at', 'same', 'time', '.', 'He', 'has', 'bad', 'habit', 'of', 'swimming', 'after', 'playing', 'long', 'hours', 'in', 'the', 'Sun', '.']\n",
+            "lemmas of tokens:  He wa running and eating at same time . He ha bad habit of swimming after playing long hour in the Sun . \n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "nltk.download('wordnet')"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "oAivkIQOrdKf",
+        "outputId": "b6ca9658-e591-4e55-fcec-4ac32ae84018"
+      },
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package wordnet to /root/nltk_data...\n",
+            "[nltk_data]   Package wordnet is already up-to-date!\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 21
+        }
+      ]
+    }
+  ]
+}
